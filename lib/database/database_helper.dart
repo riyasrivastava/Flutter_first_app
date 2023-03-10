@@ -2,7 +2,7 @@ import 'package:sqflite/sqflite.dart';
 import 'dart:async';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
-import 'package:first_application/User.dart';
+import 'package:first_application/model/api_model.dart';
 
 class DatabaseHelper{
   /*static late DatabaseHelper _databaseHelper;
@@ -60,20 +60,20 @@ class DatabaseHelper{
     return result;
   }
 
-  Future<List<User>> getUserList(int idToSearch) async{
+  Future<List<ApiModel>> getUserList(int idToSearch) async{
     var userMapList = await getUserMapList(idToSearch);
     int count = userMapList.length;
 
-    List<User> userList = <User>[];
+    List<ApiModel> userList = <ApiModel>[];
 
     for(int i=0 ; i<count ;i++){
-      userList.add(User.fromMapObject(userMapList[i]));
+      userList.add(ApiModel.fromMapObject(userMapList[i]));
     }
 
     return userList;
   }
 
-  Future<int> insertUser(List<User> users) async {
+  Future<int> insertUser(List<ApiModel> users) async {
     final Database db = await initializedDB();
     int result = 0;
     for (var user in users) {

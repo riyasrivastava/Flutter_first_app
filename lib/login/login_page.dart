@@ -1,4 +1,4 @@
-import 'package:first_application/api_data.dart';
+import 'package:first_application/dashboard/dashboard.dart';
 import 'package:first_application/bloc/sign_in_bloc.dart';
 import 'package:first_application/bloc/sign_in_event.dart';
 import 'package:first_application/bloc/sign_in_state.dart';
@@ -6,11 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(Login());
 }
 
-class MyApp extends StatelessWidget {
-   MyApp({super.key});
+class Login extends StatelessWidget {
+   Login({super.key});
 
   // This widget is the root of your application.
   @override
@@ -22,14 +22,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(),
+      home: LoginPage(),
     ),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
-   MyHomePage({super.key});
+class LoginPage extends StatelessWidget {
+   LoginPage({super.key});
 
    TextEditingController emailController = TextEditingController();
    TextEditingController passwordController = TextEditingController();
@@ -98,7 +98,7 @@ class MyHomePage extends StatelessWidget {
 
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => ApiData(emailController.text, passwordController.text)),
+                          MaterialPageRoute(builder: (context) => Dashboard(emailController.text, passwordController.text)),
                         );
 
                       });
